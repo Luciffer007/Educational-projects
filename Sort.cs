@@ -78,9 +78,7 @@ namespace SortLibrary
                     array[j] = temp;
                     i++;
                     j--;
-
                 }
-
             }
 
             // Calling the sort method for subarrays.
