@@ -16,44 +16,6 @@ namespace BinaryTree
         public BinaryTreeNode Left { get; internal set; }
         // Link to the right child node.
         public BinaryTreeNode Right { get; internal set; }
-
-        // An auxiliary method for finding a tree node with a given value.
-        internal BinaryTreeNode Find(long number)
-        {
-            // If the given value is equal to the value of the node, return the current node.
-            if (Data == number) return this;
-
-            // If the given value is less than the value of the current node.
-            if (Data > number && Left != null)
-            {
-                // Search in the left branch.
-                return Left.Find(number);
-            }
-
-            // If the given value is greater than the value of the current node.
-            if (Data < number && Right != null)
-            {
-                // Search in the right branch.
-                return Right.Find(number);
-            }
-
-            // If the node is not found, return null.
-            return null;
-        }
-
-        // Finding the tree node with the maximum value.
-        internal long? FindMax()
-        {
-            // Go down the right branch.
-            return Right != null ? Right.FindMax() : Data;
-        }
-
-        // Finding the tree node with the minimum value.
-        internal long? FindMin()
-        {
-            // Go down the left branch.
-            return Left != null ? Left.FindMin() : Data;
-        }
     }
 
     public abstract class BinaryTreeBase
@@ -70,30 +32,34 @@ namespace BinaryTree
             Root.Data = rootValue;
         }
 
-        // Maximum and minimum values of binary tree.
+        // Maximum values of binary tree.
         public long? Max
         {
             get
             {
-                return Root.FindMax();
+                // Go down the right branch.
+                BinaryTreeNode maxNode = Root;
+                while (maxNode.Right != null)
+                    maxNode = maxNode.Right;
+                return maxNode.Data;
             }
         }
 
+        // Minimum values of binary tree.
         public long? Min
         {
             get
             {
-                return Root.FindMin();
+                // Go down the left branch.
+                BinaryTreeNode minNode = Root;
+                while (minNode.Left != null)
+                    minNode = minNode.Left;
+                return minNode.Data;
             }
         }
 
-        // Search for a tree node with a given value.
-        public BinaryTreeNode FindInTree(long number)
-        {
-            return Root.Find(number);
-        }
-
         // Inserting a single node into a tree.
+        // The "BinaryTreeNode node" argument was introduced to enable a recursive method call.
         public abstract void Insert (long number, BinaryTreeNode node);
 
         // Inserting multiple nodes into a tree.
@@ -105,6 +71,31 @@ namespace BinaryTree
                 // Perform the operation of inserting a new node of the tree.
                 Insert(numberArray[i], Root);
             }
+        }
+
+        // Search for a tree node with a given value.
+        // The "BinaryTreeNode node" argument was introduced to enable a recursive method call.
+        public BinaryTreeNode Find(long number, BinaryTreeNode node)
+        {
+            // If the given value is equal to the value of the node, return the current node.
+            if (node.Data == number) return node;
+
+            // If the given value is less than the value of the current node.
+            if (node.Data > number && node.Left != null)
+            {
+                // Search in the left branch.
+                return Find(number, node.Left);
+            }
+
+            // If the given value is greater than the value of the current node.
+            if (node.Data < number && node.Right != null)
+            {
+                // Search in the right branch.
+                return Find(number, node.Right);
+            }
+
+            // If the node is not found, return null.
+            return null;
         }
 
         // Removing a node from a tree.
