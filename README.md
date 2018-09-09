@@ -23,45 +23,15 @@ SortingAlgorithms.QuickSort(sortArray, firstElement, lastElement);;
 * **firstElement** - _int_ - index of the beginning of the array being sorted;
 * **lastElement** - _int_ - index of the end of the array being sorted;
 
-## Binary Sort Tree
+## Binary Sort/Search Tree
 
-Creating a binary sort tree:
+### Creating a binary tree:
 
 ``` C#
 BinarySortTree binaryTree = new BinarySortTree(rootValue);
 ```
 
-* **rootValue** - _long?_ - the value of the root node of the tree;
-
-Adding new nodes to a tree:
-
-``` C#
-binaryTree.Insert(insertionValue, binaryTree.Root);
-binaryTree.Insert(insertionValueArray);
-```
-
-* **insertionValue** - _long_ - value of the tree node being added;
-* **insertionValueArray** - _long[]_ - array of value of the tree nodes being added;
-
-Search for a tree node with a given value (return BinaryTreeNode):
-
-``` C#
-binaryTree.Find(searchedValue, binaryTree.Root);
-```
-
-* **searchedValue** - _long_ - the searched value of the node;
-
-Deleting a tree node:
-
-``` C#
-binaryTree.Delete(deletionNode);
-```
-
-* **deletionNode** - _BinaryTreeNode_ - removable tree node;
-
-## Binary Search Tree
-
-Creating a binary search tree:
+**or**
 
 ``` C#
 BinarySearchTree binaryTree = new BinarySearchTree(rootValue);
@@ -69,7 +39,7 @@ BinarySearchTree binaryTree = new BinarySearchTree(rootValue);
 
 * **rootValue** - _long?_ - the value of the root node of the tree;
 
-Adding new nodes to a tree:
+### Adding new nodes to a tree:
 
 ``` C#
 binaryTree.Insert(insertionValue, binaryTree.Root);
@@ -79,7 +49,7 @@ binaryTree.Insert(insertionValueArray);
 * **insertionValue** - _long_ - value of the tree node being added;
 * **insertionValueArray** - _long[]_ - array of value of the tree nodes being added;
 
-Search for a tree node with a given value (return BinaryTreeNode):
+### Search for a tree node with a given value (return instance of the BinaryTreeNode class):
 
 ``` C#
 binaryTree.Find(searchedValue, binaryTree.Root);
@@ -87,14 +57,19 @@ binaryTree.Find(searchedValue, binaryTree.Root);
 
 * **searchedValue** - _long_ - the searched value of the node;
 
-Deleting a tree node:
+An instance of the BinaryTreeNode class contains the following properties:
+
+* **Data** - _long?_ - value of the tree node;
+* **Parent** - _BinaryTreeNode_ - reference to the parent node;
+* **Left** - _BinaryTreeNode_ - reference to the left child node;
+* **Right** - _BinaryTreeNode_ - reference to the right child node;
+
+All these properties are read-only.
+
+### Deleting a tree node:
 
 ``` C#
 binaryTree.Delete(deletionNode);
 ```
 
 * **deletionNode** - _BinaryTreeNode_ - removable tree node;
-
-
-
-
