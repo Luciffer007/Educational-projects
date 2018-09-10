@@ -56,10 +56,12 @@ namespace Sort
             while (i <= j)
             {
                 // The search for an array element is less than the supporting element.
-                while (array[i] < supportingElemnt && i <= lastElement) i++;
+                while (array[i] < supportingElemnt && i <= lastElement)
+                    i++;
 
                 // The search for an array element is greater than the supporting element.
-                while (array[j] > supportingElemnt && j >= firstElement) j--;
+                while (array[j] > supportingElemnt && j >= firstElement)
+                    j--;
 
                 // Swap the element less than the supporting element and the element is greater than the supporting element.
                 if (i <= j)

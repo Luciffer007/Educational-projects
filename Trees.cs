@@ -67,10 +67,8 @@ namespace BinaryTree
         {
             // For each element of the array. 
             for (int i = 0; i < numberArray.Length; i++)
-            {
                 // Perform the operation of inserting a new node of the tree.
                 Insert(numberArray[i], Root);
-            }
         }
 
         // Search for a tree node with a given value.
@@ -78,21 +76,18 @@ namespace BinaryTree
         public BinaryTreeNode Find(long number, BinaryTreeNode node)
         {
             // If the given value is equal to the value of the node, return the current node.
-            if (node.Data == number) return node;
+            if (node.Data == number)
+                return node;
 
             // If the given value is less than the value of the current node.
             if (node.Data > number && node.Left != null)
-            {
                 // Search in the left branch.
                 return Find(number, node.Left);
-            }
 
             // If the given value is greater than the value of the current node.
             if (node.Data < number && node.Right != null)
-            {
                 // Search in the right branch.
                 return Find(number, node.Right);
-            }
 
             // If the node is not found, return null.
             return null;
@@ -102,14 +97,17 @@ namespace BinaryTree
         public void Delete(BinaryTreeNode node)
         {
             // Validation of entered data.
-            if (node == null || node.Parent == null) return;
+            if (node == null || node.Parent == null)
+                return;
 
             // If there are no child nodes.
             if (node.Left == null && node.Right == null)
             {
                 // Just delete the node.
-                if (node == node.Parent.Left) node.Parent.Left = null;
-                else node.Parent.Right = null;
+                if (node == node.Parent.Left)
+                    node.Parent.Left = null;
+                else
+                    node.Parent.Right = null;
                 return;
             }
 
@@ -117,8 +115,10 @@ namespace BinaryTree
             if (node.Left == null && node.Right != null)
             {
                 // Replace the deleted node with it.
-                if (node == node.Parent.Left) node.Parent.Left = node.Right;
-                else node.Parent.Right = node.Right;
+                if (node == node.Parent.Left)
+                    node.Parent.Left = node.Right;
+                else
+                    node.Parent.Right = node.Right;
                 node.Right.Parent = node.Parent;
                 return;
             }
@@ -127,8 +127,10 @@ namespace BinaryTree
             if (node.Left != null && node.Right == null)
             {
                 // Replace the deleted node with it.
-                if (node == node.Parent.Left) node.Parent.Left = node.Left;
-                else node.Parent.Right = node.Left;
+                if (node == node.Parent.Left)
+                    node.Parent.Left = node.Left;
+                else
+                    node.Parent.Right = node.Left;
                 node.Left.Parent = node.Parent;
                 return;
             }
@@ -137,8 +139,10 @@ namespace BinaryTree
             if (node.Left != null && node.Right != null)
             {
                 // Replace the deleted node with the right child node
-                if (node == node.Parent.Left) node.Parent.Left = node.Right;
-                else node.Parent.Right = node.Right;
+                if (node == node.Parent.Left)
+                    node.Parent.Left = node.Right;
+                else
+                    node.Parent.Right = node.Right;
                 node.Right.Parent = node.Parent;
 
                 // And the left child node insert in the right child node.
@@ -169,7 +173,8 @@ namespace BinaryTree
                     node.Left.Parent = node;
                 }
                 // Or go down the left branch to the node below and repeat the operation.
-                else Insert(number, node.Left);
+                else
+                    Insert(number, node.Left);
             }
             else
             {
@@ -181,7 +186,8 @@ namespace BinaryTree
                     node.Right.Parent = node;
                 }
                 // Or go down the right branch to the node below and repeat the operation.
-                else Insert(number, node.Right);
+                else
+                    Insert(number, node.Right);
             }
         }
     }
@@ -212,7 +218,8 @@ namespace BinaryTree
                     node.Left.Parent = node;
                 }
                 // Or go down the left branch to the node below and repeat the operation.
-                else Insert(number, node.Left);
+                else
+                    Insert(number, node.Left);
             }
             else
             {
@@ -224,7 +231,8 @@ namespace BinaryTree
                     node.Right.Parent = node;
                 }
                 // Or go down the right branch to the node below and repeat the operation.
-                else Insert(number, node.Right);
+                else
+                    Insert(number, node.Right);
             }
         }
     }
