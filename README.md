@@ -7,19 +7,19 @@ The namespace "BinaryTree" ([Trees.cs](https://github.com/Luciffer007/Educationa
 ## Bubble Sort
 
 ``` C#
-SortingAlgorithms.BubbleSort(sortArray, direction);
+SortingAlgorithms.BubbleSort(array, direction);
 ```
 
-* **sortArray** - _double[]_ - your sorted array;
+* **array** - _double[]_ - your sorted array;
 * **direction** - _SortingDirection_ - array sorting direction. SortingDirection - enumeration with the values of Asc and Desc;
 
 ## Quicksort
 
 ``` C#
-SortingAlgorithms.QuickSort(sortArray, firstElement, lastElement);; 
+SortingAlgorithms.QuickSort(array, firstElement, lastElement); 
 ```
 
-* **sortArray** - _double[]_ - your sorted array;
+* **array** - _double[]_ - your sorted array;
 * **firstElement** - _int_ - index of the beginning of the array being sorted;
 * **lastElement** - _int_ - index of the end of the array being sorted;
 
@@ -28,38 +28,38 @@ SortingAlgorithms.QuickSort(sortArray, firstElement, lastElement);;
 ### Creating a binary tree:
 
 ``` C#
-BinarySortTree binaryTree = new BinarySortTree(rootValue);
+BinarySortTree binaryTree = new BinarySortTree(value);
 ```
 
 **or**
 
 ``` C#
-BinarySearchTree binaryTree = new BinarySearchTree(rootValue);
+BinarySearchTree binaryTree = new BinarySearchTree(value);
 ```
 
-* **rootValue** - _long?_ - the value of the root node of the tree;
+* **value** - _long_ - the value of the root node of the tree;
 
 ### Adding new nodes to a tree:
 
 ``` C#
-binaryTree.Insert(insertionValue, binaryTree.Root);
-binaryTree.Insert(insertionValueArray);
+binaryTree.Insert(nodeValue, binaryTree.Root);
+binaryTree.Insert(vodeValues);
 ```
 
-* **insertionValue** - _long_ - value of the tree node being added;
-* **insertionValueArray** - _long[]_ - array of value of the tree nodes being added;
+* **nodeValue** - _long_ - value of the tree node being added;
+* **nodeValues** - _long[]_ - array of value of the tree nodes being added;
 
 ### Search for a tree node with a given value (return instance of the BinaryTreeNode class):
 
 ``` C#
-binaryTree.Find(searchedValue, binaryTree.Root);
+binaryTree.Find(nodeValue, binaryTree.Root);
 ```
 
-* **searchedValue** - _long_ - the searched value of the node;
+* **nodeValue** - _long_ - the searched value of the node;
 
 An instance of the BinaryTreeNode class contains the following properties:
 
-* **Data** - _long?_ - value of the tree node;
+* **Data** - _long_ - value of the tree node;
 * **Parent** - _BinaryTreeNode_ - reference to the parent node;
 * **Left** - _BinaryTreeNode_ - reference to the left child node;
 * **Right** - _BinaryTreeNode_ - reference to the right child node;
