@@ -8,7 +8,7 @@ namespace Sort
 {
     public static class SortingAlgorithms
     {
-        public enum SortingDirection { Asc = 1, Desc = 2 };
+        public enum SortingDirection { Asc, Desc };
 
         public static double[] BubbleSort(double[] array, SortingDirection direction)
         {
@@ -18,15 +18,15 @@ namespace Sort
                 for (int j = i + 1; j < array.Length; j++)
                 {
                     // Sort the elements of the array in ascending or descending order depending on the selected sorting direction.
-                    switch ((int)direction)
+                    switch (direction)
                     {
-                        case 1:
+                        case SortingDirection.Asc:
                             // If the i-th element of the array is greater than the j-th element.
                             if (array[i] > array[j])
                                 // Swap elements which passed order condition.
                                 Helper.Swap(array, i, j);
                             break;
-                        case 2:
+                        case SortingDirection.Desc:
                             // If the i-th element of the array is less than the j-th element.
                             if (array[i] < array[j])
                                 // Swap elements which passed order condition.
