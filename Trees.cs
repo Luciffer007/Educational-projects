@@ -9,7 +9,7 @@ namespace BinaryTree
     public class BinaryTreeNode
     {
         // Node value.
-        public long? Data { get; internal set; }
+        public long Data { get; internal set; }
         // Link to the parent node.
         public BinaryTreeNode Parent { get; internal set; }
         // Link to the left child node.
@@ -23,17 +23,14 @@ namespace BinaryTree
         // Root node of a binary tree.
         public BinaryTreeNode Root { get; protected set; }
 
-        public BinaryTreeBase(long rootValue)
+        public BinaryTreeBase(long value)
         {
             Root = new BinaryTreeNode();
-            Root.Parent = null;
-            Root.Left = null;
-            Root.Right = null;
-            Root.Data = rootValue;
+            Root.Data = value;
         }
 
         // Maximum values of binary tree.
-        public long? Max
+        public long Max
         {
             get
             {
@@ -46,7 +43,7 @@ namespace BinaryTree
         }
 
         // Minimum values of binary tree.
-        public long? Min
+        public long Min
         {
             get
             {
@@ -60,34 +57,34 @@ namespace BinaryTree
 
         // Inserting a single node into a tree.
         // The "BinaryTreeNode node" argument was introduced to enable a recursive method call.
-        public abstract void Insert (long number, BinaryTreeNode node);
+        public abstract void Insert (long nodeValue, BinaryTreeNode node);
 
         // Inserting multiple nodes into a tree.
-        public void Insert(long[] numberArray)
+        public void Insert(long[] nodeValues)
         {
             // For each element of the array. 
-            for (int i = 0; i < numberArray.Length; i++)
+            for (int i = 0; i < nodeValues.Length; i++)
                 // Perform the operation of inserting a new node of the tree.
-                Insert(numberArray[i], Root);
+                Insert(nodeValues[i], Root);
         }
 
         // Search for a tree node with a given value.
         // The "BinaryTreeNode node" argument was introduced to enable a recursive method call.
-        public BinaryTreeNode Find(long number, BinaryTreeNode node)
+        public BinaryTreeNode Find(long nodeValue, BinaryTreeNode node)
         {
             // If the given value is equal to the value of the node, return the current node.
-            if (node.Data == number)
+            if (node.Data == nodeValue)
                 return node;
 
             // If the given value is less than the value of the current node.
-            if (node.Data > number && node.Left != null)
+            if (node.Data > nodeValue && node.Left != null)
                 // Search in the left branch.
-                return Find(number, node.Left);
+                return Find(nodeValue, node.Left);
 
             // If the given value is greater than the value of the current node.
-            if (node.Data < number && node.Right != null)
+            if (node.Data < nodeValue && node.Right != null)
                 // Search in the right branch.
-                return Find(number, node.Right);
+                return Find(nodeValue, node.Right);
 
             // If the node is not found, return null.
             return null;
@@ -157,24 +154,26 @@ namespace BinaryTree
 
     public class BinarySortTree : BinaryTreeBase
     {
-        public BinarySortTree(long rootValue)
-            : base(rootValue) { }
+        public BinarySortTree(long value)
+            : base(value) { }
 
-        public override void Insert(long number, BinaryTreeNode node)
+        public override void Insert(long nodeValue, BinaryTreeNode node)
         {
             // If the specified value is less than or equal to the current node value.
-            if (node.Data >= number)
+            if (node.Data >= nodeValue)
             {
                 // Create a new left child node, if there is none.
                 if (node.Left == null)
                 {
                     node.Left = new BinaryTreeNode();
-                    node.Left.Data = number;
+                    node.Left.Data = nodeValue;
                     node.Left.Parent = node;
                 }
                 // Or go down the left branch to the node below and repeat the operation.
                 else
-                    Insert(number, node.Left);
+                {
+                    Insert(nodeValue, node.Left);
+                }
             }
             else
             {
@@ -182,44 +181,44 @@ namespace BinaryTree
                 if (node.Right == null)
                 {
                     node.Right = new BinaryTreeNode();
-                    node.Right.Data = number;
+                    node.Right.Data = nodeValue;
                     node.Right.Parent = node;
                 }
                 // Or go down the right branch to the node below and repeat the operation.
                 else
-                    Insert(number, node.Right);
+                {
+                    Insert(nodeValue, node.Right);
+                }
             }
         }
     }
 
     public class BinarySearchTree : BinaryTreeBase
     {
-        public BinarySearchTree(long rootValue)
-            : base(rootValue) { }
+        public BinarySearchTree(long value)
+            : base(value) { }
 
-        public override void Insert(long number, BinaryTreeNode node)
+        public override void Insert(long nodeValue, BinaryTreeNode node)
         {
             // If the node is empty or its value is equal to the given.
-            if (node.Data == number)
-            {
-                // Write the given value into it.
-                node.Data = number;
+            if (node.Data == nodeValue)
                 return;
-            }
 
             // If the given value is less than the value of the current node.
-            if (node.Data > number)
+            if (node.Data > nodeValue)
             {
                 // Create a new left child node, if there is none.
                 if (node.Left == null)
                 {
                     node.Left = new BinaryTreeNode();
-                    node.Left.Data = number;
+                    node.Left.Data = nodeValue;
                     node.Left.Parent = node;
                 }
                 // Or go down the left branch to the node below and repeat the operation.
                 else
-                    Insert(number, node.Left);
+                {
+                    Insert(nodeValue, node.Left);
+                }
             }
             else
             {
@@ -227,12 +226,14 @@ namespace BinaryTree
                 if (node.Right == null)
                 {
                     node.Right = new BinaryTreeNode();
-                    node.Right.Data = number;
+                    node.Right.Data = nodeValue;
                     node.Right.Parent = node;
                 }
                 // Or go down the right branch to the node below and repeat the operation.
                 else
-                    Insert(number, node.Right);
+                {
+                    Insert(nodeValue, node.Right);
+                }
             }
         }
     }
