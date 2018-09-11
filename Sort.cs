@@ -8,7 +8,11 @@ namespace Sort
 {
     public static class SortingAlgorithms
     {
-        public enum SortingDirection { Asc, Desc };
+        public enum SortingDirection
+        {
+            Asc,
+            Desc
+        }
 
         public static double[] BubbleSort(double[] array, SortingDirection direction)
         {
