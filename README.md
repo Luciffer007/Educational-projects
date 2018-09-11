@@ -43,7 +43,7 @@ BinarySearchTree binaryTree = new BinarySearchTree(value);
 
 ``` C#
 binaryTree.Insert(nodeValue, binaryTree.Root);
-binaryTree.Insert(vodeValues);
+binaryTree.Insert(nodeValues);
 ```
 
 * **nodeValue** - _long_ - value of the tree node being added;
@@ -69,7 +69,7 @@ All these properties are read-only.
 ### Deleting a tree node:
 
 ``` C#
-binaryTree.Delete(deletionNode);
+binaryTree.Delete(node);
 ```
 
-* **deletionNode** - _BinaryTreeNode_ - removable tree node;
+* **node** - _BinaryTreeNode_ - removable tree node;
